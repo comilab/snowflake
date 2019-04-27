@@ -15,12 +15,15 @@
 
 ## インストール手順
 1. /api/public 以下が表示されるように設置（パーミッション類は適宜変更してください）
-2. /api/.env.example を /api/.envにコピーし、APP_ENVとDB周りの設定を調整
-3. 以下を実行
+2. /api/.env.example を /api/.envにコピーする
+3. .envのAPP_ENVをproductionにし、DB周りなどの設定を調整
+4. 以下を実行
 ```sh
 $ cd api
 $ php artisan key:generate
-$ php artisan migrate --seed
+$ php artisan migrate
+$ php artisan db:seed --class=UsersTableSeeder
+$ php artisan db:seed --class=SeetingsTableSeeder
 $ php artisan storage:link
 $ cd ../app
 $ npm run build
@@ -28,8 +31,16 @@ $ npm run build
 管理画面は/adminにアクセスしてください
 （初期ID: admin@example.com / PW: secret / 管理画面アクセス後に変更してください）
 
-## 動作確認手順
-1. 以下2つを並列実行
+## 動作確認手順（開発用）
+1. 初回のみインストール手順と同様に.envを作成・編集（APP_ENVはlocalのまま）し、以下を実行
+```sh
+$ cd api
+$ php artisan key:generate
+# ダミー記事を50件作成します
+$ php artisan migrate --seed
+$ php artisan storage:link
+```
+2. 以下2つを並列実行
 ```sh
 $ cd app
 $ npm run dev
