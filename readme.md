@@ -56,4 +56,4 @@ $ npm run dev:all
 $ php artisan serve
 ```
 
-2. http://127.0.0.1:8080 にアクセス
+2. http://127.0.0.1:8000 にアクセス
