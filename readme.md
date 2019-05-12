@@ -42,10 +42,14 @@ $ npm run build
 
 ```sh
 $ cd api
+$ composer install
+$ npm install
 $ php artisan key:generate
 # ダミー記事を50件作成します
 $ php artisan migrate --seed
 $ php artisan storage:link
+$ cd ../web
+$ npm install
 ```
 
 2. 以下を実行
@@ -53,7 +57,6 @@ $ php artisan storage:link
 ```sh
 $ cd api
 $ npm run dev:all
-$ php artisan serve
 ```
 
-2. http://127.0.0.1:8000 にアクセス
+3. http://127.0.0.1:8000 にアクセス
